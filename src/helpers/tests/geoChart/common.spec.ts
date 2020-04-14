@@ -179,7 +179,7 @@ describe("common", () => {
             expect(isColorAssignmentItemChanged(colorAssignment, colorAssignment)).toBe(false);
         });
 
-        it("should return true with colorAssignment is different ", () => {
+        it("should return true with colorAssignment is different", () => {
             const prevColorAssignment: IColorAssignment[] = [
                 ...colorAssignment,
                 {

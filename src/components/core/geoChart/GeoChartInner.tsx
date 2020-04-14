@@ -97,11 +97,12 @@ export class GeoChartInner extends React.PureComponent<IGeoChartInnerProps, IGeo
     }
 
     private readonly throttledOnWindowResize: ReturnType<typeof throttle>;
+
     public constructor(props: IGeoChartInnerProps) {
         super(props);
         this.state = {
             enabledLegendItems: [],
-            showFluidLegend: shouldShowFluid(this.props.documentObj),
+            showFluidLegend: shouldShowFluid(props.documentObj),
             colorAssignmentItem: [],
         };
         this.throttledOnWindowResize = throttle(this.onWindowResize, 100);
@@ -193,7 +194,7 @@ export class GeoChartInner extends React.PureComponent<IGeoChartInnerProps, IGeo
         });
     }
 
-    private getFlexDirection(position: PositionType) {
+    private getFlexDirection(position: PositionType): string {
         const {
             config: { legend: { responsive = false } = {} },
         } = this.props;
@@ -350,7 +351,7 @@ export class GeoChartInner extends React.PureComponent<IGeoChartInnerProps, IGeo
         });
     };
 
-    private updateConfigurationPanel(geoChartOptions: IGeoChartInnerOptions) {
+    private updateConfigurationPanel(geoChartOptions: IGeoChartInnerOptions): void {
         const { pushData } = this.props;
         const { categoryItems, geoData, colorStrategy, colorPalette } = geoChartOptions;
         const { hasCategoryLegend, hasColorLegend, hasSizeLegend } = getAvailableLegends(
